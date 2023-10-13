@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<link rel="stylesheet" type="text/css" href="normaliz.css">
+	<link rel="icon"  href="icono.png">
+	<link rel="stylesheet" type="text/css" href="gamerRom/gamesForDcode/css/estiloXO.css">
+	<div style="display: none; position: absolute;"> <!--musica rom-->
+		<audio id="audioSuperMarioGalaxi2" src="Games/XO/music/Starship_mario_1_2_and_3_P0vsREk3UWo_140.mp3"> <!--super mario galaxi 2-->
+	<audio id="audioSuperMarioGalaxi1" src="Games/XO/music/Good_Egg_Galaxy_Super_Mario_Galaxy_984xoStqrq0_140.mp3"><!--super mario galaxi1-->
+	<audio id="audioSuperMarioWorld" src="Games/XO/music/Game_Over_Sound_Effects_High_Quality_bug1b0fQS8Y_140.mp3"><!--super mario world-->
+	<audio id="audioGameover" src="Games/XO/music/Game_Over_Sound_Effects_High_Quality_bug1b0fQS8Y_140.mp3"><!--gameover-->
+		<audio id="audioScheeming" src="Games/XO/music/Scheming_Weasel_Faster_Sound_Effect_4UgHCZNJiRM_140.mp3"><!--scheeming (gameplay)-->
+				<audio id="audioStartUp" src="Games/XO/music/The_Legend_of_Zelda_25th_Anniversary_Symphony_Ballad_of_v4ReyoNpyrM.mp3"><!--start up-->
+					<audio id="audioSigup" src="Games/XO/music/Windows_Error_Sound_3x5FUqWya5A_140.mp3"><!--sing up-->
+	</div>
+<div style="display:none; position: absolute;">
+	<audio id="cancelarEnvioDeInvitacion" src="sonidos/Cancelar envío de invitacion.mp3"></audio>
+	<audio id="cancelarInvitacion" src="sonidos/Cancelar invitacion.mp3"></audio>
+	<audio id="enviarInvitacion" src="sonidos/Enviar invitación .mp3"></audio>
+	<audio id="notificacionRequestChat" src="sonidos/Notificación Request chat.mp3"></audio>
+	<audio id="notificacionSend" src="sonidos/notificaion send.mp3"></audio>
+	<audio id="start" src="sonidos/Start.mp3"></audio>
+	<audio id="boom" src="sonidos/sonido_de_explosión.mp3"></audio>
+	<audio id="correctoQuestion" src="sonidos/respuestaCorrecta.mp3"></audio>
+</div>
+
+	<title>ServerRepositoriGames</title>
+</head>
+<body>
+	<center>
+<button style="display:none; position: absolute;" class="cancelarVerificacionForNotificacion"></button>		
+<div class="errorSever" style="display:none;">
+	<p>Ups ocurrio un error en el servidor</p>
+	<i class="fa-solid fa-gamepad iGamePad" style="display:none;"></i>
+</div>
+<div class="subBody" style="display:none;">
+	<div class="startAnimation" style="display:block;">
+		<h1 class="h1AnimationStart"><p class="pAnimationStart">Hola </p> <p class="p1AnimationStart">¿Estas</p> <p class="p2AnimationStart">Listo</p> <p class="p3AnimationStart">Para</p> <p class="p4AnimationStart">Jugar?</p></h1>
+<div id="responsiveDiv" style="display: block"></div>
+
+		<h5 class="clickEnter">Toca Enter</h5>
+		<p class="clickEnterResponsive">Toca la pantalla</p>
+
+	</div>
+</div>
+
+</center>
+<div class="LoginUserGame" style=" opacity: 0; "><!--CreateRepositori"newUser"-->
+	 <div class="loginPrompt" style="">
+	 	 <div class="statusConectionUsersDiv"><img src="acedor.gif"><p id="statusConectionUsers">Esperando prompt <i class="fa-solid fa-database"></i></p></div>
+
+	 	  <img id="userAvatar" src="http://testgranada.sytes.net/perfiles/jugadorUno.gif"><div id="spanChangeImguser"><i style="color: black;cursor: pointer;" class="fa-solid fa-pencil iSpan"><img style="width: 20px;height: 20px;padding: 0;" src="iconos/pencil.png"></i></div> <input max="8" placeholder="escribe tu nombre" type="text" id="userName" name="">
+	 	  <button id="buttonEnvioPeticionNewUser">Siguiente</button>
+	 </div>
+	 <div id="imgChange" style="display: none; "> 
+	 	<div class="imgChangeContainerJS">
+	 	</div>
+	  </div>
+	 <script type="text/javascript">
+	 	 const arrayImg = [
+	 	             "http://testgranada.sytes.net/perfiles/jugadorUno.gif","http://testgranada.sytes.net/perfiles/jugadorDos.gif",
+	 	             "http://testgranada.sytes.net/perfiles/jugador4.jpg","http://testgranada.sytes.net/perfiles/jugador5.jpg",
+	 	                   "http://testgranada.sytes.net/perfiles/jugador6.jpg","http://testgranada.sytes.net/perfiles/jugador7.jpg",
+	 	                   "http://testgranada.sytes.net/perfiles/jugador8.jpg","http://testgranada.sytes.net/perfiles/jugador9.jpg",
+	 	                   "http://testgranada.sytes.net/perfiles/jugador10.jpg","http://testgranada.sytes.net/perfiles/jugador11.jpg",
+	 	                   "http://testgranada.sytes.net/perfiles/jugador12.jpg","http://testgranada.sytes.net/perfiles/jugador13.jpg",
+	 	                   "http://testgranada.sytes.net/perfiles/jugador14.jpg","http://testgranada.sytes.net/perfiles/jugador15.jpg",
+	 	                   "http://testgranada.sytes.net/perfiles/jugador16.jpg","http://testgranada.sytes.net/perfiles/jugador17.jpg",
+	 	                   "http://testgranada.sytes.net/perfiles/jugador18.jpg","http://testgranada.sytes.net/perfiles/jugador19.jpg",
+	 	                   "http://testgranada.sytes.net/perfiles/jugador20.jpg","http://testgranada.sytes.net/perfiles/jugador21.jpg",
+	 	                   "http://testgranada.sytes.net/perfiles/jugador22.jpg","http://testgranada.sytes.net/perfiles/jugador23.jpg",
+	 	                   ]
+	 	 let span = document.getElementById('spanChangeImguser');
+	 	 let spanI = document.querySelector('.iSpan')
+	 	 let contenedor = document.getElementById('imgChange');
+	 	 let contenedorPadre = document.querySelector('.imgChangeContainerJS');
+	 	 let imgAvatar = document.getElementById('userAvatar');
+	 	  arrayImg.forEach((srcimg)=>{//inyector de img
+	 	  	 const img = document.createElement('IMG');
+	 	  	 img.src = srcimg;
+	 	  	 img.classList.add('imgUserRequestServer')
+	 	  	 contenedorPadre.appendChild(img)
+	 	  })
+	 
+	 	 spanI.addEventListener('mouseup',()=>{
+               span.appendChild(contenedorPadre)
+               span.style.borderRadius = "10px";
+	 	       span.classList.add('imgChange_responsive')
+        let firstChild = span.firstElementChild;
+        let sblingElement = firstChild.nextElementSibling;
+   		sblingElement.style.position = "relative";
+	 	sblingElement.style.display = "block";
+	 	 })
+const images = document.querySelectorAll('.imgUserRequestServer');
+
+images.forEach( (e) => {
+	 e.addEventListener('click', ()=>{
+	 	let firstChild = span.firstElementChild;
+        let sblingElement = firstChild.nextElementSibling;
+	 	imgAvatar.src = e.src;
+	 	sblingElement.style.position = "absolute";
+	 	sblingElement.style.display = "none";
+	 	span.style.borderRadius = "50%";
+	 	span.classList.remove('imgChange_responsive')
+        span.removeAttribute('class')
+	 })
+})
+	 </script> 
+</div>
+<div class="statusRepositori" style="display: none;">
+	<div class="loaderRepositori"></div>
+	<p id="PstatusRepositori">Verificando repositorio</p>
+</div>
+<div class="contenedorJson" style="display:none;"><!--HOWManyUsers-->
+	<p id="statusConection"></p>
+	<div class="contenedorStatusServer" style="display: none;">
+	<p style="display: inline-block;" id="pStatus">STATUS</p>
+	<div class="loader"></div>
+	<div class="load" style="display: none"></div>
+	<p style="display: inline-block;" id="users"></p>
+</div>
+<nav class="nav">
+	<input class="buttonsNav"  id="inputSearch"  autocomplete="of" type="text" placeholder="Buscar gamers retro">
+	<i id="iSearch" title="Buscar" class="fa-solid fa-magnifying-glass buttonsNav"><img style="width: 20px;height: 20px;padding: 0;" src="iconos/search.png"></i>
+	<img id="imgNavUsers" src="http://192.168.20.20:8080/DataJson/perfiles/jugador38.jpg">
+	<i id="iTrofeo" class="fa-solid fa-trophy buttonsNav"><img style="width: 20px;height: 20px;padding: 0;" src="iconos/trofeo.png"></i>
+	<i title="Invitaciones" id="Isolicitud" class="fa-solid fa-bell buttonsNav"><img style="width: 20px;height: 20px;padding: 0;" src="iconos/noti.png"></i>
+	<i title="Amigos" id="iUsers" class="fa-solid fa-users buttonsNav"><p id="pIAmigos" style="font-size: 15px; font-weight:1000; color:  #e5820a   ; position: absolute; top: -120%; left: 50%; transform: translate(-50%);">10</p><img style="width: 20px;height: 20px;padding: 0;" src="iconos/friends.png"></i>
+</nav>
+<img src="">
+<div id="friendsContainer" style="display:none;">
+</div>
+<div class="statusConectionUsersDiv2"><img class="imgAcedor" src="acedor.gif"><div id="statusConectionUsers2">
+<p>Manda una invitacion, busca a tus amigos o acepta una invitacion para jugar</p>
+
+</div></div>
+<div id="spanNoti" style="display:none;">
+</div>
+
+</div>
+<div class="loadingConectionUsers" style="display:none;">
+	<div class="loadingConectionAnimation"></div>
+	<p id="statusConectionUsersP">Conectandote con tu supuesto amigo</p>
+</div>
+</div>
+<div class="loadderViajeAlServer" style=" 
+display:block;"> <!--loader viaje--------------------------------------------------------->
+<div class="divInfoViajeServer">
+	<h1 id="h1loaderViaje">DcodeServer</h1>
+	<h3>Cargando datos del servidor <span class="doct"><p class="doct0">.</p><p class="doct1">.</p><p class="doct2">.</p></span></h3>
+	<p id="pLoaderViaje">"No programes para encontrar soluciones. Programa para crear soluciones" </p>
+	<script type="text/javascript">
+	  let arraydataFrase = [`"No programes para encontrar soluciones. Programa para crear soluciones"`,`"DcodeServer se creo con un procesador pemtium"`,`"Sabias que puedes ingresar juegos a base de javaScript "`,`"Si no te gusta que los chatbots hablen de forma eronica, ni modo porque no pienso programar una funcion para eso"`,`"Sabias que : si dejas de respirar te mueres?"`,`"sabias que: me que sin ideas para seguir poniendo esto"`,`"La vida esta llena de oportunidades, no las rechases no sabes si esa oportunidad te puede cambiar la vida"`];
+	  datosRamdon=()=>{
+	  	let retornar;
+	  	 let dataMath = Math.floor(Math.random()*arraydataFrase.length);
+         retornar = arraydataFrase[dataMath]
+         return retornar
+	  }
+	  setInterval(()=>{
+	  setTimeout(()=>{pLoaderViaje.style.opacity = "0"},2000)
+	  setTimeout(()=>{pLoaderViaje.style.opacity = "1"; pLoaderViaje.textContent = datosRamdon()},3000)
+	  },7000)
+
+	</script>
+</div>
+	 <img id="imagesViajeAlSever" src="Games/loaderImages/7.gif">
+</div>
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div class="gamesByDcode" style="display:none;">
+	
+	<div class="containerSobrePonerlo">
+ 
+	<div class="containerByXO">
+		<div class="info">
+			 <img src="http://192.168.0.106:80/DataJson/perfiles/jugador6.jpg" id="infoAvatarSiguiente">
+			 <img src="http://192.168.0.106:80/DataJson/perfiles/jugador7.jpg" id="infoAvatarActual">
+			 <h1 id="infoStatusUsername">TESTING</h1>
+			 <p id="infoStatusGame">Es turno de TESTING</p>
+			 <!-- <p id="infoStatusContador"><b id="infoUserContadorLocal">T = 0</b> vs <b id="infoUserContadorOnline">I = 1</b></p> -->
+		</div>
+		<div class="buttons">
+			  <button class="buttonsXO" id="buttonsNumber1">X</button><button class="buttonsXO" id="buttonsNumber2">X</button><button class="buttonsXO" id="buttonsNumber3">X</button><br>
+			  <button class="buttonsXO" id="buttonsNumber4">X</button><button class="buttonsXO" id="buttonsNumber5">X</button><button class="buttonsXO" id="buttonsNumber6">X</button><br>
+			  <button class="buttonsXO" id="buttonsNumber7">X</button><button class="buttonsXO" id="buttonsNumber8">X</button><button class="buttonsXO" id="buttonsNumber9">X</button>
+		</div>
+	</div>
+</div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!--container question perdedor-->
+<div class="intermedioViajeAlchat" style="display:none;"><!----------------------------------------------------------------------------->
+	 <div>
+	 	<div>
+	 	<p id="statusQuestionWinP">Ganaste la corona</p>
+	 </div>
+	 <img class="corona1" src="iconos/corona.png" style="z-index: 10; position:absolute; right: 0;  top: 0; width:10%;  object-fit: fill;">
+	 <img id="animationCorrect1" src="animacionCelebration.gif" style="display: block; position:absolute; left:50%; top: 50%; transform:translate(-50%,-50%);">
+	 <img style="z-index:5;" id="statusQuestionWinIMG" src="http://192.168.0.106:80/perfiles/jugador19.jpg">
+	 </div>
+</div>
+<div class="loaderQuestionPerdedor" style="display:none;">
+	<!-- <label class="loaderQuestionPerdedorLabel">user name esta eligiendo una pregunta para ti</label> -->
+</div>
+<div class="contenedorQuestionPerdedor" style="display:none;">
+	<img id="animationCorrect" src="animacionCelebration.gif" style="display: none; position:absolute; left:50%; top: 50%; transform:translate(-50%,-50%);">
+	<p style="font-size:30px; display: inline-block; " ><b style="
+	background: black; border-radius: 15px; padding:5px; color: white;"> Retos </b> <p id="userNameQuestionGanador">Tu amigo eligio esta pregunta para ti</p></p>
+	<h4>Responde correctamente</h4>
+	<p id="question">Que es la resistencia indgina</p>
+<div class="containerQUESTIONInput">
+	<div class="containerQUESTIONInputdIV">
+	<input type="checkbox" name="" class="inputCheckbox" id="questionTreeInput" autocomplete="off" value="">
+<label id="questionOne"></label><br>  
+</div>
+	<div class="containerQUESTIONInputdIV">
+	<input type="checkbox" name="" class="inputCheckbox" id="questionTreeInput1" autocomplete="off" value="">
+<label id="questionTwo"></label><br>  
+</div>
+	<div class="containerQUESTIONInputdIV">
+	<input type="checkbox" name="" class="inputCheckbox" id="questionTreeInput2" autocomplete="off"  value="">
+<label id="questionTree"></label><br>  
+</div>
+</div>	
+</div>
+<div class="contenedorQuestionGanador" style="display:none;">
+	<h3 id="userNameQuestionLuser" style="background: black;color: white;padding: 5px; border-radius: 15px; width:30%;">Eligue una pregunta para username</h3>
+	<div class="usersContainer">
+
+	</div>
+</div>
+<div class="containerGestos" style="display:none; position: absolute;">
+	<div>
+	
+		<div   class="containersGestos">
+	  <video class="videoReaccion"   src="Games/XO/reacciones/como llego eso ahi jeje.mp4"></video>
+		</div>
+		<div class="containersGestos">
+	  <video class="videoReaccion"  src="Games/XO/reacciones/Hombre aplaudiendo en el teatro.mp4"></video>
+		</div>
+		<div  class="containersGestos">
+	  <video class="videoReaccion" src="Games/XO/reacciones/Necesito uno de esos.mp4"></video>
+		</div>
+<div class="containersGestos">
+	  <video class="videoReaccion"  src="Games/XO/reacciones/Okay.mp4"></video>
+</div>
+<div class="containersGestos">
+	  <!-- <video class="videoReaccion"  src="Games/XO/reacciones/usted es diabólico.mp4"></video>	 -->
+</div>
+<div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/eres pendejo.mp4"></video>	
+</div>
+
+<div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/Exijo venganza, quiero venganza.mp4"></video>	
+</div>
+<div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/muerde el cebo.MP4"></video>	
+</div>
+<div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/no es mi culpa.mp4"></video>	
+</div>
+<div class="containersGestos">
+ <!-- <video  class="videoReaccion" src="Games/XO/reacciones/mi manera es la manera de los dioses.mp4"></video>	 -->
+</div><div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/niño oxo.mp4"></video>	
+</div><div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/patoCuack.mp4"></video>	
+</div><div class="containersGestos">
+ <!-- <video  class="videoReaccion" src="Games/XO/reacciones/ibai.mp4"></video>	 -->
+</div><div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/ibai.mp4"></video>	
+</div><div class="containersGestos">
+ <!-- <video  class="videoReaccion" src="Games/XO/reacciones/mi manera es la manera de los dioses.mp4"></video>	 -->
+</div><div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/EL FUTURO ES HOY.mp4"></video>	
+</div><div class="containersGestos">
+ <!-- <video  class="videoReaccion" src="Games/XO/reacciones/IRA CALLATE MEJOR MEJOR.mp4"></video>	 -->
+</div><div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/NEGRO LLORANDO.mp4"></video>	
+</div><div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/NO TE METAS.mp4"></video>	
+</div><div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/Oye_Eso_Es_Un_Insulto_Para_Mi.mp4"></video>	
+</div><div class="containersGestos">
+ <video  class="videoReaccion" src="Games/XO/reacciones/RAMON.mp4"></video>	
+</div>
+	</div>
+</div>
+<div class="ganadorAnimation" style="display:none;"><!--ANIMATION GANADOR-->
+	<div class="whatWin" style="display:block;">
+		 <h1>The winner is</h1>
+	</div> 
+
+	<div class="caja_ganador" style="display:none;">
+		<h1 id="userNameAnimationGanador">Date name</h1>
+		<img id="imgAnimationGanador" src="http://192.168.0.106:80/perfiles/jugador18.jpg">
+		<img src="Games/XO/animaciones/explocionAnimation.gif" class="animacionExplocion" style=" display: none; position: absolute; right:-20%; top:50%; transform:translate(0,-50%);">
+	</div>
+	<div class="cajaPerdedorAnimation" style="display:none;">
+		 		<h1 id="userNameAnimationPerdedor">Date name</h1>
+		<img id="imgAnimationPerdedor" src="http://192.168.0.106:80/perfiles/jugador19.jpg">
+	</div>
+</div>
+<div class="cajaGanador" style="display:none;"> <!--cAJA WIN-->
+	<script type="text/javascript">
+
+	</script>
+	<div class="containerWIN" style="display:block;">
+		<!-- <img src="Games/XO/animaciones/victory.png" class="victorianimation" style="z-index: 100;"> -->
+		 <img id="imgGanador" src="http://192.168.0.106:80/perfiles/jugador19.jpg" style="z-index: 6000;">
+		 	<img class="corona" src="iconos/corona.png" style="position:absolute; right: 0;  top: 0; width:10%;  object-fit: fill;">
+		<h3 id="userWin">Data name </h3>
+<div class="promptsEnvioChats">
+	 <input autocomplete="of" type="text" max="20" placeholder="Manda un chat" id="inputpromptsEnvioChats"><button id="shareInputText"><i class="fa-solid fa-paper-plane"><img style="width: 20px;height: 20px;padding: 0; color:white;" src="iconos/send.png"></i></button><button id="buttonGestos"><i class="fa-solid fa-chevron-up fa-rotate-270"><img style="width: 20px;height: 20px;padding: 0; color:white;" src="iconos/baseline.png"></i><i class="fa-solid fa-face-laugh-squint"><img style="width: 20px;height: 20px;padding: 0; color:white;" src="iconos/face.png"></i></button>
+</div>
+	<div class="infoWin" style="display:block;">
+          <div class="containerUserschat"> <p id="chatWin"></p></div>
+	</div>
+		<div class="prompts"><button id="buttonVolverAjugarXO" style="display:none;">Jugar de nuevo</button><button style="display:none;">Salir</button></div>
+
+	</div>
+	</div>
+	<!-- ///////////////////////////////////////////////////////////// -->
+	<div class="cajaPerdedor" style="display:none;">
+		 <img id="imgPerdedor" src="http://192.168.0.106:80/perfiles/jugadorUno.gif" style="z-index: 6000;">
+		<h3 id="userWin2" style="margin: 5px; padding: 5px;">Data name <img class="coronaPng" src="iconos/cacasion.png" style="position:absolute; right: 0; top: 0; width:20%;"></h3> 
+	<div class="infoWin2" style="display:block;">
+
+          <div class="containerUserschat"><img style="display:none;" id="avatarPerdedorWin2" src="http://192.168.0.106:80/DataJson/perfiles/jugador15.jpg"> <p id="chatWin2"><b style="display: block; color: transparent;">Seperacion</b>hola amigo</p></div>
+	</div>
+
+
+	</div>
+<script type="text/javascript" src="codigo.js"></script> <!--codigoPrincipal-->
+<script type="text/javascript" src="usersFunctions.js"></script> <!--funciones de usuarios-->
+<script type="text/javascript" src="sendInvitation.js"></script> <!--mandar invitacion y recibir respuesta if(respuesta === true) conection HOST-->
+<script type="text/javascript" src="veriNotificacion.js"></script> <!--vereificacion de notificaciones-->
+<script type="text/javascript" src="conectionUser.js"></script> <!--conection local-->
+<script type="text/javascript" src="datagameXO.js"></script> <!--funcion de recopilacion de datos del juego xo--> 
+<script type="text/javascript" src="Games/XO/scripts/scriptJugadorHost.js"></script> <!--funcion de jugador host-->
+<script type="text/javascript" src="Games/XO/scripts/scriptJugadorConectHost.js"></script> <!--funcion de jugador Conectionhost-->
+<script type="text/javascript" src="Games/XO/scripts/verificacionWin.js"></script> <!--funcion de jugador Conectionhost-->
+<script type="text/javascript" src="Games/XO/scripts/sendAndRecive.js"></script> <!--funcion de jugador Conectionhost-->
+<script type="text/javascript" src="Games/XO/scripts/questionScript.js"></script> 
+</body>
+</html>
